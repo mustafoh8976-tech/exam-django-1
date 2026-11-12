@@ -82,7 +82,7 @@ DATABASES = {
         'NAME': os.getenv('sq_db'),
         'PORT': os.getenv('sq_port'),
         'HOST': os.getenv('sq_host'),
-        'USERNAME': os.getenv('sq_user'),
+        'USER': os.getenv('sq_user'),
         'PASSWORD': os.getenv('sq_password')
     }
 }
