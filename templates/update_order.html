@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Изменить заказ</title>
+</head>
+<body>
+    <h1>Изменить заказ</h1>
+    <form method="post">
+        {% csrf_token %}
+        <p>Книга: <input type="number" name="booK_id" value="{{ booK_id }}"></p>
+        <p>Сколько дней: <input type="number" name="quantity_day" value="{{ quantity_day }}"></p>
+        <p>Имя: <input type="text" name="first_p" value="{{ first_p }}"></p>
+        <p>Фамилия: <input type="text" name="last_p" value="{{ last_p }}"></p>
+        <p>Имя пользователя: <input type="text" name="username" value="{{ username }}"></p>
+        <input type="submit" value="Сохранить">
+    </form>
+    <p><a href="{% url 'list_order' %}">Назад</a></p>
+</body>
+</html>

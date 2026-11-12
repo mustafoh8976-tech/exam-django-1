@@ -78,7 +78,7 @@ WSGI_APPLICATION = 'server.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgres',
+        'ENGINE': 'django.db.backends.postgresql',
         'NAME': os.getenv('sq_db'),
         'PORT': os.getenv('sq_port'),
         'HOST': os.getenv('sq_host'),

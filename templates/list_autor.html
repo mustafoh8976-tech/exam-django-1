@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Авторы</title>
+</head>
+<body>
+    <h1>Авторы</h1>
+    <p><a href="{% url 'create_autor' %}">Добавить автора</a></p>
+    {% if autors %}
+        {% for autor in autors %}
+            <p>
+                {{ autor.first_n }} {{ autor.last_n }} — {{ autor.age }}, {{ autor.country }}
+                <a href="{% url 'update_autor' autor.pk %}">Изменить</a>
+                <a href="{% url 'delete_autor' autor.pk %}">Удалить</a>
+            </p>
+        {% endfor %}
+    {% else %}
+        <p>Авторов пока нет.</p>
+    {% endif %}
+    <p><a href="{% url 'home' %}">На главную</a></p>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Книги</title>
+</head>
+<body>
+    <h1>Книги</h1>
+    <p><a href="{% url 'create_book' %}">Добавить книгу</a></p>
+    {% if books %}
+        {% for book in books %}
+            <p>
+                {{ book.name_b }} — {{ book.pablisher }}, {{ book.create_at }}
+                <a href="{% url 'update_book' book.pk %}">Изменить</a>
+                <a href="{% url 'delete_book' book.pk %}">Удалить</a>
+            </p>
+        {% endfor %}
+    {% else %}
+        <p>Книг пока нет.</p>
+    {% endif %}
+    <p><a href="{% url 'home' %}">На главную</a></p>
+</body>
+</html>

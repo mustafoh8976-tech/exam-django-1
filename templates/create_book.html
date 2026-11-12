@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Добавить книгу</title>
+</head>
+<body>
+    <h1>Добавить книгу</h1>
+    <form method="post">
+        {% csrf_token %}
+        <p>Название: <input type="text" name="name_b" value="{{ name_b }}"></p>
+        <p>Издательство: <input type="text" name="pablisher" value="{{ pablisher }}"></p>
+        <p>Дата публикации: <input type="date" name="create_at" value="{{ create_at }}"></p>
+        <p>Год создания: <input type="number" name="create_autor_at" value="{{ create_autor_at }}"></p>
+        <input type="submit" value="Сохранить">
+    </form>
+    <p><a href="{% url 'list_book' %}">Назад</a></p>
+</body>
+</html>

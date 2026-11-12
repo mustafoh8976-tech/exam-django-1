@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Заказы</title>
+</head>
+<body>
+    <h1>Заказы</h1>
+    <p><a href="{% url 'create_order' %}">Добавить заказ</a></p>
+    {% if orders %}
+        {% for order in orders %}
+            <p>
+                {{ order.booK_id.name_b }} — {{ order.first_p }} {{ order.last_p }},
+                {{ order.quantity_day }} дней
+                <a href="{% url 'update_order' order.pk %}">Изменить</a>
+                <a href="{% url 'delete_order' order.pk %}">Удалить</a>
+            </p>
+        {% endfor %}
+    {% else %}
+        <p>Заказов пока нет.</p>
+    {% endif %}
+    <p><a href="{% url 'home' %}">На главную</a></p>
+</body>
+</html>

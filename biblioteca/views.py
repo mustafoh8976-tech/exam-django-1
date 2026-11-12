@@ -7,13 +7,14 @@ def home_view(request):
 
 
 def create_autor(request):
+    context = {'first_n': '', 'last_n': '', 'age': '', 'country': ''}
     if request.method == 'POST':
         first_n = request.POST.get('first_n')
         last_n = request.POST.get('last_n')
         age = request.POST.get('age')
         country = request.POST.get('country')
-        return render(request,'create_autor.html',context={'first_n':first_n,'last_n':last_n,'age':age,'country':country})
-    return render(request,'create_autor.html',context={'first_n':first_n,'last_n':last_n,'age':age,'country':country})
+        context = {'first_n': first_n, 'last_n': last_n, 'age': age, 'country': country}
+    return render(request, 'create_autor.html', context=context)
 
 
 
@@ -43,13 +44,14 @@ def list_autor(request):
     
     
 def create_book(request):
+    context = {'name_b': '', 'pablisher': '', 'create_at': '', 'create_autor_at': ''}
     if request.method == 'POST':
         name_b = request.POST.get('name_b')
         pablisher = request.POST.get('pablisher')
         create_at = request.POST.get('create_at')
         create_autor_at = request.POST.get('create_autor_at')
-        return render(request,'create_book.html',context={'name_b':name_b,'pablisher':pablisher,'create_at':create_at,'create_autor_at':create_autor_at})
-    return render(request,'create_book.html',context={'name_b':name_b,'pablisher':pablisher,'create_at':create_at,'create_autor_at':create_autor_at})
+        context = {'name_b': name_b, 'pablisher': pablisher, 'create_at': create_at, 'create_autor_at': create_autor_at}
+    return render(request, 'create_book.html', context=context)
     
 
 
@@ -67,8 +69,8 @@ def update_book(request,pk):
         book.pablisher = request.POST.get('pablisher')
         book.create_at = request.POST.get('create_at')
         book.create_autor_at = request.POST.get('create_autor_at') 
-        return render(request,'create_book.html',context={'name_b':book.name_b,'pablisher':book.pablisher,'create_at':book.create_at,'create_autor_at':book.create_autor_at})
-    return render(request,'create_book.html',context={'name_b':book.name_b,'pablisher':book.pablisher,'create_at':book.create_at,'create_autor_at':book.create_autor_at}) 
+        return render(request,'update_book.html',context={'name_b':book.name_b,'pablisher':book.pablisher,'create_at':book.create_at,'create_autor_at':book.create_autor_at})
+    return render(request,'update_book.html',context={'name_b':book.name_b,'pablisher':book.pablisher,'create_at':book.create_at,'create_autor_at':book.create_autor_at})
     
     
       
@@ -79,14 +81,15 @@ def list_book(request):
 
 
 def create_order(request):
+    context = {'booK_id': '', 'quantity_day': '', 'first_p': '', 'last_p': '', 'username': ''}
     if request.method == 'POST':
         booK_id = request.POST.get('booK_id')
         quantity_day = request.POST.get('quantity_day')
         first_p = request.POST.get('first_p')
         last_p = request.POST.get('last_p')
         username = request.POST.get('username')
-        return render(request,'create_autor.html',context={'booK_id':booK_id,'quantity_day':quantity_day,'first_p':first_p,'last_p':last_p,'username':username})
-    return render(request,'create_autor',context={'booK_id':booK_id,'quantity_day':quantity_day,'first_p':first_p,'last_p':last_p,'username':username})
+        context = {'booK_id': booK_id, 'quantity_day': quantity_day, 'first_p': first_p, 'last_p': last_p, 'username': username}
+    return render(request, 'create_order.html', context=context)
     
   
     
@@ -105,11 +108,11 @@ def update_order(request,pk):
         order.first_p = request.POST.get('first_p')
         order.last_p = request.POST.get('last_p') 
         order.username = request.POST.get('username')
-        return render(request,'create_autor.html',context={'booK_id':order.booK_id,'quantity_day':order.quantity_day,'first_p':order.first_p,'last_p':order.last_p,'username':order.username})
-    return render(request,'create_autor.html',context={'booK_id':order.booK_id,'quantity_day':order.quantity_day,'first_p':order.first_p,'last_p':order.last_p,'username':order.username})
+        return render(request,'update_order.html',context={'booK_id':order.booK_id_id,'quantity_day':order.quantity_day,'first_p':order.first_p,'last_p':order.last_p,'username':order.username})
+    return render(request,'update_order.html',context={'booK_id':order.booK_id_id,'quantity_day':order.quantity_day,'first_p':order.first_p,'last_p':order.last_p,'username':order.username})
     
    
     
 def list_order(request): 
-    order = Order.objects.all()
-    return render(request,'list_book.html',context={'order':order})  
+    orders = Order.objects.all()
+    return render(request,'list_order.html',context={'orders':orders})
